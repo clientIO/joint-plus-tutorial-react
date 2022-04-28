@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { dia, ui, shapes } from '@clientio/rappid';
 import { Tabs, TabList, TabPanel, Tab } from 'react-tabs';
-import { TabsData } from './tabs-data';
+import { TabsData } from './tabs-data'
+import { HyperlinkHighlighter } from './hyperlink-highlighter';
 import './App.scss';
 
 const selectedTabPanelClassName = "react-tabs__tab-panel--selected";
@@ -117,11 +118,16 @@ function App() {
       scroller.startPanning(evt);
     });
 
+    graph.getElements().forEach((element) => {
+      HyperlinkHighlighter.addToLabel(element, paper, 'subgraphId');
+    });
+
     if (focusPoint) {
       scroller.center(focusPoint.x, focusPoint.y);
     } else {
       scroller.center();
     }
+
     paper.unfreeze();
   }
 

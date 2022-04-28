@@ -3,13 +3,6 @@ interface TabData {
     json: any;
 }
 
-const linkAttributes = {
-    textDecoration: 'underline',
-    event: 'element:link',
-    fill: '#0099ff',
-    dataTooltip: 'Click to open the sub-process.',
-};
-
 export const TabsData: TabData[] = [];
 // Tab 1.
 TabsData.push({
@@ -36,8 +29,7 @@ TabsData.push({
             position: { x: 460, y: 250 },
             attrs: {
                 label: {
-                    text: 'Meal preparations',
-                    ...linkAttributes
+                    text: 'Meal preparations'
                 },
                 markers: {
                     iconTypes: ['sub-process']
@@ -133,8 +125,7 @@ TabsData.push({
                     borderType: 'thick'
                 },
                 label: {
-                    text: 'Dinner with friends',
-                    ...linkAttributes
+                    text: 'Dinner with friends'
                 }
             }
         }, {
@@ -174,8 +165,7 @@ TabsData.push({
                     iconType: 'message1'
                 },
                 label: {
-                    text: 'Include guests',
-                    ...linkAttributes
+                    text: 'Include guests'
                 }
             }
         }, {
@@ -191,8 +181,7 @@ TabsData.push({
                     iconType: 'error1'
                 },
                 label: {
-                    text: 'Provide meal',
-                    ...linkAttributes
+                    text: 'Provide meal'
                 }
             }
         }]
@@ -238,8 +227,7 @@ TabsData.push({
                     borderType: 'thick'
                 },
                 label: {
-                    text: 'Meal preparations',
-                    ...linkAttributes
+                    text: 'Meal preparations'
                 }
             }
         }, {
@@ -298,8 +286,7 @@ TabsData.push({
                     borderType: 'thick'
                 },
                 label: {
-                    text: 'Meal preparations',
-                    ...linkAttributes
+                    text: 'Meal preparations'
                 }
             }
         }, {
