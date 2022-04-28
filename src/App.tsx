@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { dia, ui, shapes } from '@clientio/rappid';
+import { dia, ui, shapes, util } from '@clientio/rappid';
 import { Tabs, TabList, TabPanel, Tab } from 'react-tabs';
 import { TabsData } from './tabs-data'
 import { HyperlinkHighlighter } from './hyperlink-highlighter';
@@ -25,7 +25,7 @@ function App() {
    * Create the default tab state
    */
    const createTabState = (title: string, json?: any) => {
-    const graph = new dia.Graph({}, { cellNamespace: shapes });
+    const graph = new dia.Graph({ id: util.uuid() }, { cellNamespace: shapes });
     let focusPoint;
     if (json) {
       graph.fromJSON(json);
@@ -154,6 +154,7 @@ function App() {
    */
   const removeTab = (index: number) => {
     setTabs(prevState => prevState.filter((_, i) => i !== index));
+    setTabIndex(Math.max(Math.min(index, tabs.length - 2), 0));
   }
 
   /**
@@ -173,17 +174,17 @@ function App() {
    * Select a tab at the specified index.
    */
   const selectTab = (index: number, prevIndex: number = tabIndex) => {
-    let maxIndex = tabs.length - 1;
-    const isTabRemoval = prevIndex === index;
-    if (isTabRemoval) {
-      maxIndex--;
-    } else if (scroller) {
+    if (prevIndex === index) return;
+    if (scroller) {
       const focusPoint = scroller.getVisibleArea().center().toJSON();
       changeTab(prevIndex, { focusPoint });
     }
-    setTabIndex(Math.max(Math.min(index, maxIndex), 0));
+    setTabIndex(Math.max(Math.min(index, tabs.length - 1), 0));
   }
 
+  /**
+   * Select a tab by its graph Id.
+   */
   const selectGraph = (graphId: string) => {
     const index = tabs.findIndex(tab => tab.graph.id === graphId);
     if (index > -1) {
@@ -191,7 +192,7 @@ function App() {
     } else {
       const message = new ui.FlashMessage({
         theme,
-        content: `Invalid graph ID: ${graphId}`,
+        content: `Invalid sub-process ID: ${graphId}`,
       });
       message.open();
     }
@@ -210,7 +211,10 @@ function App() {
       >
         <TabList className={`${TabList.defaultProps?.className} app__tab-list`}>
           {tabs.map((tab, index) => (
-            <Tab key={`tab-${tab.graph.id}`} className={`${Tab.defaultProps?.className} app__tab`}>
+            <Tab
+              key={`tab-${tab.graph.id}`}
+              className={`${Tab.defaultProps?.className} app__tab`}
+            >
               <span>{tab.title}</span>
               <button
                 data-tooltip={`Remove "${tab.title}" tab`}
@@ -230,7 +234,10 @@ function App() {
           </div>
         </TabList>
         {tabs.map((tab) => (
-        <TabPanel key={`tab-panel-${tab.graph.id}`} className={`${TabPanel.defaultProps?.className} app__tab-panel`}></TabPanel>
+        <TabPanel
+          key={`tab-panel-${tab.graph.id}`}
+          className={`${TabPanel.defaultProps?.className} app__tab-panel`}
+        ></TabPanel>
         ))}
       </Tabs>
       </div>
