@@ -210,7 +210,7 @@ function App() {
       >
         <TabList className={`${TabList.defaultProps?.className} app__tab-list`}>
           {tabs.map((tab, index) => (
-            <Tab className={`${Tab.defaultProps?.className} app__tab`}>
+            <Tab key={`tab-${tab.graph.id}`} className={`${Tab.defaultProps?.className} app__tab`}>
               <span>{tab.title}</span>
               <button
                 data-tooltip={`Remove "${tab.title}" tab`}
@@ -229,8 +229,8 @@ function App() {
             >+</button>
           </div>
         </TabList>
-        {tabs.map(() => (
-        <TabPanel className={`${TabPanel.defaultProps?.className} app__tab-panel`}></TabPanel>
+        {tabs.map((tab) => (
+        <TabPanel key={`tab-panel-${tab.graph.id}`} className={`${TabPanel.defaultProps?.className} app__tab-panel`}></TabPanel>
         ))}
       </Tabs>
       </div>
