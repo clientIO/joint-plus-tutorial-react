@@ -237,10 +237,12 @@ function App() {
         <TabPanel
           key={`tab-panel-${tab.graph.id}`}
           className={`${TabPanel.defaultProps?.className} app__tab-panel`}
-        ></TabPanel>
+        >
+          <h2 className="app__tab-title">{tab.title}</h2>
+        </TabPanel>
         ))}
       </Tabs>
-      </div>
+    </div>
   );
 }
 

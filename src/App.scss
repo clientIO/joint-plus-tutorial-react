@@ -10,6 +10,10 @@
     }
 }
 
+.app__tab {
+    font-family: sans-serif;
+}
+
 .app__tab-button {
     margin: 0 10px;
 }
@@ -32,6 +36,19 @@
 .app__tab-list {
     flex-grow: 1;
     max-height: 36px;
+    background: #efefef;
+    margin: 0 0 0 0;
+
+    &::after {
+        content: '';
+        position: absolute;
+        display: block;
+        top: 36px;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(to bottom, #fff, transparent);
+        z-index: 1;
+    }
 }
 
 .app__tab-panel {
@@ -41,5 +58,16 @@
     .joint-paper {
         border: 1px solid lightgray;
     }
+}
+
+.app__tab-title {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 1;
+    background: rgba(#ffffff, 0.6);
+    font-family: sans-serif;
 }
 
