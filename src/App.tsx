@@ -5,9 +5,6 @@ import { TabsData } from './tabs-data'
 import { HyperlinkHighlighter } from './hyperlink-highlighter';
 import './App.scss';
 
-const selectedTabPanelClassName = "react-tabs__tab-panel--selected";
-const theme = 'material';
-
 /**
  * Extend the default activity icons with all events icons.
  */
@@ -17,6 +14,8 @@ function App() {
 
   let paper: dia.Paper;
   let scroller: ui.PaperScroller;
+
+  const theme = 'material';
 
   const appEl = useRef<HTMLDivElement>(null);
 
@@ -48,6 +47,7 @@ function App() {
    */
   const onDomRef = (tabsEl: HTMLElement | undefined) => {
     if (tabsEl) {
+      const selectedTabPanelClassName = TabPanel.defaultProps?.selectedClassName;
       const tabPanelEl = tabsEl.querySelector(`.${selectedTabPanelClassName}`);
       if (tabPanelEl) {
         mountTab(tabPanelEl);
@@ -203,9 +203,8 @@ function App() {
       ref={appEl}
     >
       <Tabs
-        className={`${Tabs.defaultProps?.className} app__tabs`}
+        className="app__tabs"
         selectedIndex={tabIndex}
-        selectedTabPanelClassName={selectedTabPanelClassName}
         onSelect={(index, prevIndex) => selectTab(index, prevIndex)}
         domRef={(node) => onDomRef(node)}
       >
