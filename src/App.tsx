@@ -88,7 +88,8 @@ function App() {
         frozen: true,
         async: true,
         gridSize: 10,
-        cellViewNamespace: shapes
+        cellViewNamespace: shapes,
+        defaultConnectionPoint: { name: 'boundary' },
     });
     scroller = new ui.PaperScroller({
         paper,
