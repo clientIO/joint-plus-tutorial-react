@@ -4,6 +4,11 @@
   "private": true,
   "dependencies": {
     "@clientio/rappid": "file:rappid.tgz",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.8.2",
+    "@mui/lab": "^5.0.0-alpha.84",
+    "@mui/material": "^5.8.3",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
