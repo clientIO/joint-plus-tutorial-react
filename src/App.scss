@@ -17,11 +17,7 @@
             border-right: 1px solid #E2E2E2;
             background-color: #F5F5F5;
 
-            .Mui-focused {
-                background: #4666E5;
-                color: #ffffff;
-            }
-
+            .Mui-focused,
             .Mui-selected {
                 background: #08B081;
                 color: #ffffff;
@@ -37,7 +33,7 @@
             .joint-paper {
 
                 .joint-highlight-mask {
-                    fill: #4B4A67;
+                    fill: #08B081;
                 }
 
                 // Arrowheads

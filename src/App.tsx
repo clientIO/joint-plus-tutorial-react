@@ -139,8 +139,7 @@ function App() {
 
     let selectionFrame: highlighters.mask | null = null;
 
-    graph.off('change:selectedCell');
-    graph.on('change:selectedCell', () => {
+    paper.listenTo(graph, 'change:selectedCell', () => {
       if (selectionFrame) {
         selectionFrame.remove();
         selectionFrame = null;
@@ -154,10 +153,11 @@ function App() {
           'selection-frame',
           {
             layer: dia.Paper.Layers.BACK,
-            padding: 3,
+            padding: 4,
             attrs: {
               'stroke-width': 2,
-              'stroke-linecap': 'round'
+              'stroke-linecap': 'round',
+              'opacity': '0.6'
             }
           }
         );
