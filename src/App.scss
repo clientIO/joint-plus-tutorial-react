@@ -4,12 +4,35 @@
     height: 100vh;
     width: 100vw;
 
-    .canvas {
+    .app {
         width: 100%;
         height: 100%;
+        display: flex;
+        flex-direction: row;
 
-        .joint-paper {
-            border: 1px solid #A0A0A0;
+        .stencil {
+            width: 130px;
+            height: 100%;
+            background-color: #f0f0f0;
+            border: 1px solid black;
+            position: relative;
+        }
+
+        .canvas {
+            width: calc(80% - 150px);
+            height: 100%;
+
+            .joint-paper {
+                border: 1px solid #A0A0A0;
+            }
+        }
+
+        .inspector {
+            width: 20%;
+            height: 100%;
+            position: relative;
+            border: 1px solid black;
         }
     }
+
 }
