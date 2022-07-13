@@ -40,6 +40,10 @@ function App() {
     graph.addCell(rect);
     paper.unfreeze();
 
+    return () => {
+        scroller.remove();
+        paper.remove();
+    };
   }, []);
 
   return (
