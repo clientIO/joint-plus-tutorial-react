@@ -7,7 +7,7 @@ function App() {
   const canvas: any = useRef(null);
 
   useEffect(() => {
-    const graph = new dia.Graph();
+    const graph = new dia.Graph({}, { cellNamespace: shapes });
 
     const paper = new dia.Paper({
         model: graph,
@@ -15,7 +15,8 @@ function App() {
         color: '#F8F9FA',
         },
         frozen: true,
-        async: true
+        async: true,
+        cellViewNamespace: shapes
     });
 
     const scroller = new ui.PaperScroller({
