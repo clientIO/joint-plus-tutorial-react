@@ -1,10 +1,10 @@
-# rappid-tutorial-react
+# joint-plus-tutorial-react
 
-This git repository is intended for instructional purposes. It is the source code that accompanies a Rappid blog post "Integration with React" which can be found [here](https://resources.jointjs.com/tutorial/react-ts).
+This git repository is intended for instructional purposes. It is the source code that accompanies a JointJS+ blog post "Integration with React" which can be found [here](https://resources.jointjs.com/tutorial/react-ts).
 
 ### Prerequisites  
 
-To run the following code, you will need a [Rappid license](https://www.jointjs.com/license) that comes with the Rappid installable package file `rappid.tgz`.
+To run the following code, you will need a [JointJS+ license](https://www.jointjs.com/license) that comes with the JointJS+ installable package file `rappid.tgz`.
 
 ### Dependencies
 
@@ -18,13 +18,13 @@ Make sure you have the following dependencies installed on your system:
 Clone this repository.
 
 ```
-git clone git@github.com:clientIO/rappid-tutorial-react.git
+git clone git@github.com:clientIO/joint-plus-tutorial-react.git
 ```
 
-Change into the `rappid-tutorial-react` directory.
+Change into the `joint-plus-tutorial-react` directory.
 
 ```
-cd rappid-tutorial-react
+cd joint-plus-tutorial-react
 ```
 
 For this tutorial, you need to place your own `rappid.tgz` file in the root directory.
