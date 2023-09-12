@@ -7,6 +7,20 @@ import '@testing-library/jest-dom';
 // Mock method which is not implemented in JSDOM
 window.SVGPathElement = jest.fn();
 
+// Mock SVGAngle which is used for sanity checks in Vectorizer library
+Object.defineProperty(window, 'SVGAngle', {
+  writable: true,
+  value: jest.fn().mockImplementation(() => ({
+      new: jest.fn(),
+      prototype: jest.fn(),
+      SVG_ANGLETYPE_UNKNOWN: 0,
+      SVG_ANGLETYPE_UNSPECIFIED: 1,
+      SVG_ANGLETYPE_DEG: 2,
+      SVG_ANGLETYPE_RAD: 3,
+      SVG_ANGLETYPE_GRAD: 4
+  }))
+});
+
 beforeEach(()=>{
 
     Object.defineProperty(global.SVGSVGElement.prototype, 'createSVGMatrix', {
