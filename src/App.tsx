@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { dia, ui, shapes, util } from '@clientio/rappid';
+import { dia, ui, shapes, util } from '@joint/plus';
 import { Tabs, TabList, TabPanel, Tab } from 'react-tabs';
 import { TabsData } from './tabs-data'
 import { HyperlinkHighlighter } from './hyperlink-highlighter';
