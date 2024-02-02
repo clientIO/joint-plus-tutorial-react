@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { dia, ui, shapes } from '@clientio/rappid';
+import { dia, ui, shapes } from '@joint/plus';
 import './App.scss';
 
 function App() {
