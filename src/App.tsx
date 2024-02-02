@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { dia, ui, shapes, highlighters } from '@clientio/rappid';
-import TreeView from '@mui/lab/TreeView';
-import TreeItem from '@mui/lab/TreeItem';
+import { dia, ui, shapes, highlighters } from '@joint/plus';
+import { TreeView, TreeItem } from '@mui/x-tree-view';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { TreeData } from './tree-data';
