@@ -1,4 +1,4 @@
-import { dia } from '@clientio/rappid';
+import { dia } from '@joint/plus';
 
 interface HyperlinkHighlighterOptions extends dia.HighlighterView.Options {
     path: string;
