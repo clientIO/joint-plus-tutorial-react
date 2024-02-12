@@ -4,7 +4,7 @@ import {
     ui,
     shapes as defaultShapes,
     highlighters,
-} from '@clientio/rappid';
+} from '@joint/plus';
 import { Ellipse, PortElement, Rectangle } from './shapes';
 import './App.scss';
 

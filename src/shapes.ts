@@ -1,4 +1,4 @@
-import { dia } from '@clientio/rappid';
+import { dia } from '@joint/plus';
 
 export abstract class PortElement extends dia.Element {
     abstract addDefaultPorts(): void;
