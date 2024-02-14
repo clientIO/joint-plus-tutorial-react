@@ -23,6 +23,15 @@ Object.defineProperty(window, 'SVGAngle', {
 
 beforeEach(()=>{
 
+    Object.defineProperty(global, 'ResizeObserver', {
+      writable: true,
+      value: jest.fn().mockImplementation(() => ({
+          observe: jest.fn(),
+          unobserve: jest.fn(),
+          disconnect: jest.fn()
+      }))
+    });
+
     Object.defineProperty(global.SVGSVGElement.prototype, 'createSVGMatrix', {
       writable: true,
       value: jest.fn().mockImplementation(() => ({
@@ -54,7 +63,7 @@ beforeEach(()=>{
         })),
       })),
     });
-  
+
     Object.defineProperty(global.SVGSVGElement.prototype, 'createSVGPoint', {
       writable: true,
       value: jest.fn().mockImplementation(() => ({
@@ -66,7 +75,7 @@ beforeEach(()=>{
         })),
       })),
     });
-  
+
     Object.defineProperty(global.SVGSVGElement.prototype, 'createSVGTransform', {
       writable: true,
       value: jest.fn().mockImplementation(() => ({
@@ -84,5 +93,4 @@ beforeEach(()=>{
         setTranslate: jest.fn(),
       })),
     });
-
 });
