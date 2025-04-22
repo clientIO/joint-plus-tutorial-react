@@ -4,6 +4,86 @@
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom/extend-expect';
 
+// Interfaces
+// ----------
+
+/**
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/SVGAngle
+ */
+const createSVGAngle = () => ({
+    SVG_ANGLETYPE_UNKNOWN: 0,
+    SVG_ANGLETYPE_UNSPECIFIED: 1,
+    SVG_ANGLETYPE_DEG: 2,
+    SVG_ANGLETYPE_RAD: 3,
+    SVG_ANGLETYPE_GRAD: 4,
+});
+
+/**
+ * @description SVGMatrix is deprecated, we should use DOMMatrix instead
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/SVGMatrix
+ */
+const createSVGMatrix = () => ({
+    a: 0,
+    b: 0,
+    c: 0,
+    d: 0,
+    e: 0,
+    f: 0,
+    flipX: jest.fn().mockImplementation(createSVGMatrix),
+    flipY: jest.fn().mockImplementation(createSVGMatrix),
+    inverse: jest.fn().mockImplementation(createSVGMatrix),
+    multiply: jest.fn().mockImplementation(createSVGMatrix),
+    rotate: jest.fn().mockImplementation(createSVGMatrix),
+    rotateFromVector: jest.fn().mockImplementation(createSVGMatrix),
+    scale: jest.fn().mockImplementation(createSVGMatrix),
+    scaleNonUniform: jest.fn().mockImplementation(createSVGMatrix),
+    skewX: jest.fn().mockImplementation(createSVGMatrix),
+    skewY: jest.fn().mockImplementation(createSVGMatrix),
+    translate: jest.fn().mockImplementation(createSVGMatrix),
+});
+
+/**
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/SVGTransform
+ */
+const createSVGTransform = () => ({
+    type: 0,
+    angle: 0,
+    matrix: createSVGMatrix(),
+    SVG_TRANSFORM_UNKNOWN: 0,
+    SVG_TRANSFORM_MATRIX: 1,
+    SVG_TRANSFORM_TRANSLATE: 2,
+    SVG_TRANSFORM_SCALE: 3,
+    SVG_TRANSFORM_ROTATE: 4,
+    SVG_TRANSFORM_SKEWX: 5,
+    SVG_TRANSFORM_SKEWY: 6,
+    setMatrix: jest.fn(),
+    setRotate: jest.fn(),
+    setScale: jest.fn(),
+    setSkewX: jest.fn(),
+    setSkewY: jest.fn(),
+    setTranslate: jest.fn(),
+});
+
+/**
+ * @description SVGPoint is deprecated, we should use DOMPoint instead
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/SVGPoint
+ */
+const createSVGPoint = () => ({
+    x: 0,
+    y: 0,
+    matrixTransform: jest.fn().mockImplementation(createSVGPoint),
+});
+
+/**
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/SVGRect
+ */
+const createSVGRect = () => ({
+    x: 0,
+    y: 0,
+    width: 0,
+    height: 0,
+});
+
 // Mocks
 // -----
 
@@ -19,7 +99,7 @@ globalThis.SVGPathElement = jest.fn();
  */
 Object.defineProperty(globalThis, 'SVGAngle', {
     writable: true,
-    value: jest.fn().mockImplementation(() => SVGAngle),
+    value: jest.fn().mockImplementation(createSVGAngle),
 });
 
 beforeEach(() => {
@@ -38,7 +118,7 @@ beforeEach(() => {
      */
     Object.defineProperty(globalThis.SVGSVGElement.prototype, 'createSVGMatrix', {
         writable: true,
-        value: jest.fn().mockImplementation(() => SVGMatrix),
+        value: jest.fn().mockImplementation(createSVGMatrix),
     });
 
     /**
@@ -46,7 +126,7 @@ beforeEach(() => {
      */
     Object.defineProperty(globalThis.SVGSVGElement.prototype, 'createSVGTransform', {
         writable: true,
-        value: jest.fn().mockImplementation(() => SVGTransform),
+        value: jest.fn().mockImplementation(createSVGTransform),
     });
 
     /**
@@ -54,7 +134,7 @@ beforeEach(() => {
      */
     Object.defineProperty(globalThis.SVGSVGElement.prototype, 'createSVGPoint', {
         writable: true,
-        value: jest.fn().mockImplementation(() => SVGPoint),
+        value: jest.fn().mockImplementation(createSVGPoint),
     });
 
     /**
@@ -73,7 +153,7 @@ beforeEach(() => {
      */
     Object.defineProperty(globalThis.SVGElement.prototype, 'getScreenCTM', {
         writable: true,
-        value: jest.fn().mockImplementation(() => SVGMatrix),
+        value: jest.fn().mockImplementation(createSVGMatrix),
     });
 
     /**
@@ -82,86 +162,7 @@ beforeEach(() => {
      */
     Object.defineProperty(globalThis.SVGElement.prototype, 'getBBox', {
         writable: true,
-        value: jest.fn().mockImplementation(() => SVGRect)
+        value: jest.fn().mockImplementation(createSVGRect)
     });
 
-});
-
-// Interfaces
-// ----------
-
-/**
- * @see https://developer.mozilla.org/en-US/docs/Web/API/SVGAngle
- */
-const SVGAngle = ({
-    SVG_ANGLETYPE_UNKNOWN: 0,
-    SVG_ANGLETYPE_UNSPECIFIED: 1,
-    SVG_ANGLETYPE_DEG: 2,
-    SVG_ANGLETYPE_RAD: 3,
-    SVG_ANGLETYPE_GRAD: 4,
-});
-
-/**
- * @description SVGMatrix is deprecated, we should use DOMMatrix instead
- * @see https://developer.mozilla.org/en-US/docs/Web/API/SVGMatrix
- */
-const SVGMatrix = ({
-    a: 0,
-    b: 0,
-    c: 0,
-    d: 0,
-    e: 0,
-    f: 0,
-    flipX: jest.fn().mockImplementation(() => SVGMatrix),
-    flipY: jest.fn().mockImplementation(() => SVGMatrix),
-    inverse: jest.fn().mockImplementation(() => SVGMatrix),
-    multiply: jest.fn().mockImplementation(() => SVGMatrix),
-    rotate: jest.fn().mockImplementation(() => SVGMatrix),
-    rotateFromVector: jest.fn().mockImplementation(() => SVGMatrix),
-    scale: jest.fn().mockImplementation(() => SVGMatrix),
-    scaleNonUniform: jest.fn().mockImplementation(() => SVGMatrix),
-    skewX: jest.fn().mockImplementation(() => SVGMatrix),
-    skewY: jest.fn().mockImplementation(() => SVGMatrix),
-    translate: jest.fn().mockImplementation(() => SVGMatrix),
-});
-
-/**
- * @see https://developer.mozilla.org/en-US/docs/Web/API/SVGTransform
- */
-const SVGTransform = ({
-    type: 0,
-    angle: 0,
-    matrix: SVGMatrix,
-    SVG_TRANSFORM_UNKNOWN: 0,
-    SVG_TRANSFORM_MATRIX: 1,
-    SVG_TRANSFORM_TRANSLATE: 2,
-    SVG_TRANSFORM_SCALE: 3,
-    SVG_TRANSFORM_ROTATE: 4,
-    SVG_TRANSFORM_SKEWX: 5,
-    SVG_TRANSFORM_SKEWY: 6,
-    setMatrix: jest.fn(),
-    setRotate: jest.fn(),
-    setScale: jest.fn(),
-    setSkewX: jest.fn(),
-    setSkewY: jest.fn(),
-    setTranslate: jest.fn(),
-});
-
-/**
- * @see https://developer.mozilla.org/en-US/docs/Web/API/SVGPoint
- */
-const SVGPoint = ({
-    x: 0,
-    y: 0,
-    matrixTransform: jest.fn().mockImplementation(() => SVGPoint),
-});
-
-/**
- * @see https://developer.mozilla.org/en-US/docs/Web/API/SVGRect
- */
-const SVGRect = ({
-    x: 0,
-    y: 0,
-    width: 0,
-    height: 0,
 });
