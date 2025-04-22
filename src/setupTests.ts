@@ -162,7 +162,7 @@ beforeEach(() => {
      */
     Object.defineProperty(globalThis.SVGElement.prototype, 'getBBox', {
         writable: true,
-        value: jest.fn().mockImplementation(createSVGRect)
+        value: jest.fn().mockImplementation(createSVGRect),
     });
 
 });
