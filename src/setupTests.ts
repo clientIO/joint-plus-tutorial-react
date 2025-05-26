@@ -179,4 +179,27 @@ beforeEach(() => {
         },
     });
 
+    /**
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/SVGTransformList
+     * @description SVGElement.transform.baseVal is not implemented in JSDOM yet.
+     */
+    Object.defineProperty(globalThis.SVGElement.prototype, 'transform', {
+        writable: true,
+        value: {
+            baseVal: {
+                numberOfItems: 0,
+                length: 0,
+                appendItem: jest.fn().mockImplementation(createSVGTransform),
+                clear: jest.fn(),
+                consolidate: jest.fn().mockImplementation(createSVGTransform),
+                getItem: jest.fn().mockImplementation(() => createSVGTransform()),
+                initialize: jest.fn().mockImplementation(createSVGTransform),
+                insertItemBefore: jest.fn().mockImplementation(createSVGTransform),
+                removeItem: jest.fn().mockImplementation(createSVGTransform),
+                replaceItem: jest.fn().mockImplementation(createSVGTransform),
+                createSVGTransformFromMatrix: jest.fn().mockImplementation(createSVGTransform),
+            }
+        }
+    });
+
 });
